@@ -1,0 +1,9 @@
+.container{
+  margin-top: 50px;
+}
+
+
+.form-control {
+  height: 34px; /* Adjust the height as needed */
+  margin-right: 10px; /* Adjust the spacing between inputs as needed */
+}
