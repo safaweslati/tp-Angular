@@ -17,7 +17,6 @@ import { DefaultImagePipe } from './CV/pipes/default-image.pipe';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import { DetailsCvComponent } from './CV/details-cv/details-cv.component';
-import {ROUTING} from "./app.routing";
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
@@ -42,7 +41,6 @@ import { HeaderComponent } from './header/header.component';
         BrowserAnimationsModule, // required animations module
         ToastrModule.forRoot(),
       HttpClientModule,
-      ROUTING
     ],
   providers: [],
   bootstrap: [AppComponent]
