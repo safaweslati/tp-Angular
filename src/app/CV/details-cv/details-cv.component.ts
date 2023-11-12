@@ -15,6 +15,7 @@ export class DetailsCvComponent {
               private activatedRoute : ActivatedRoute,
               private router: Router,
               private toastr: ToastrService) {
+
     this.activatedRoute.params.subscribe({
       next: (params) => {
         this.cvService.getCvById(params['id']).subscribe({
@@ -29,7 +30,6 @@ export class DetailsCvComponent {
       error:
         (error) => {
         console.log(error);
-
         }
     });
 

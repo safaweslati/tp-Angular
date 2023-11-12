@@ -18,7 +18,8 @@ export class EmbaucheService {
   }
 
   embaucher(cv: Cv) : void{
-    const index = this.cvs.indexOf(cv);
+    const index = this.cvs.findIndex((c) => cv.id === cv.id && c.name === cv.name && c.firstname === cv.firstname );
+    console.log(index);
     if(index < 0)  this.cvs.push(cv);
     else this.toastr.error(`${cv.name} ${cv.firstname} a été déjà sélectionnée`);
   }

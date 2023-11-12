@@ -4,6 +4,7 @@ import {CvComponent} from "./CV/cv/cv.component";
 import {DetailsCvComponent} from "./CV/details-cv/details-cv.component";
 import {MiniWordComponent} from "./mini-word/mini-word.component";
 import {TestComponent} from "./directive/test/test.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {path: 'cv', children: [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: '', component: CvComponent},
   { path: 'word', component: MiniWordComponent },
   { path: 'rainbow', component: TestComponent },
+  {path: 'login', component: LoginComponent}
 ];
 
 

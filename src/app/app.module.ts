@@ -18,6 +18,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import { DetailsCvComponent } from './CV/details-cv/details-cv.component';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HeaderComponent } from './header/header.component';
     EmbaucheComponent,
     DefaultImagePipe,
     DetailsCvComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,
