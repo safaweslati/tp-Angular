@@ -1,27 +1,32 @@
 import { Injectable } from '@angular/core';
-import {Cv} from "../Model/Cv";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { Cv } from '../Model/Cv';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CvService {
-
   private Fakecvs: Cv[] = [
-    new Cv(1, "Oueslati", "Safa", "Software Engineer","   "),
-    new Cv(2, "Oueslati", "Douaa","Graphic Designer", "rotating_card_profile.png"),
-    new Cv(3, "Amine", "Ahmed","DevOps Engineer", "as.png"),
+    new Cv(1, 'Ouertani', 'Safa', 'Software Engineer', '   '),
+    new Cv(
+      2,
+      'Ouerghi',
+      'Douaa',
+      'Graphic Designer',
+      'rotating_card_profile.png'
+    ),
+    new Cv(3, 'Mahmoud', 'Ahmed', 'DevOps Engineer', 'as.png'),
   ];
-  private link = "https://apilb.tridevs.net/api/personnes\n"
+  private link = 'https://apilb.tridevs.net/api/personnes\n';
 
-  constructor(private http : HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-   getCvs() : Observable<Cv[]>{
-     return this.http.get<Cv[]>(this.link);
+  getCvs(): Observable<Cv[]> {
+    return this.http.get<Cv[]>(this.link);
   }
 
-  getFakeCvs(){
+  getFakeCvs() {
     return this.Fakecvs;
   }
 
@@ -30,6 +35,6 @@ export class CvService {
   }
 
   deleteCv(id: number) {
-    return this.http.delete(this.link + `/${id}`)
+    return this.http.delete(this.link + `/${id}`);
   }
 }

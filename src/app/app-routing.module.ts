@@ -14,7 +14,7 @@ const routes: Routes = [
       { path: ':id', component: DetailsCvComponent },
     ],
   },
-  { path: '', component: CvComponent },
+  { path: '', redirectTo: '/cv', pathMatch: 'full' },
   { path: 'word', component: MiniWordComponent },
   { path: 'rainbow', component: TestComponent },
   { path: 'login', component: LoginFormComponent },
