@@ -1,0 +1,11 @@
+
+<div *ngIf="cvs && cvs.length > 0">
+  <h2>Liste des cvs sélectionnés pour embauche</h2>
+<div style="margin-top: 2%; ">
+  <span *ngFor="let cv of cvs" style="margin-right: 2%">
+    {{cv.firstname | titlecase}} {{cv.name | titlecase}}
+    <img height="150 px" width="140px"  src="assets/images/{{ cv.path | defaultImage }}">
+
+  </span>
+</div>
+</div>

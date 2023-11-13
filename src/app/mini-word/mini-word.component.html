@@ -1,0 +1,16 @@
+
+
+<div class="container">
+<p [ngStyle]="{'color': color , 'font-size' : size + 'px' , 'font-family': font }">
+  Test
+</p>
+<div class="input-group">
+  <input class="form-control" [(ngModel)]="color" type="color">
+  <input class="form-control" type="number" [(ngModel)]="size" min="1">
+  <select class="form-control" [(ngModel)]="font">
+    <option selected value="arial">Arial</option>
+    <option value="verdana">Verdana</option>
+    <option value="Impact">Impact</option>
+    <option value="Monaco">Monaco</option>
+  </select></div>
+</div>

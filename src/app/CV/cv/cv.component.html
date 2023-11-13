@@ -1,0 +1,11 @@
+<div class="row" >
+  <div class="col-md-6 col-sm-3">
+    <app-liste (selectedCv)="selectCv($event)"  [cvs]="cvs$"></app-liste>
+  </div>
+  <div class="col-md-5 col-sm-9" style="margin-left: 3%">
+    <app-details *ngIf="selectedCv" [cv]="selectedCv"></app-details>
+  </div>
+</div>
+<div class="row" style="margin-top: 2%; margin-bottom: 5% ">
+  <app-embauche></app-embauche>
+</div>
