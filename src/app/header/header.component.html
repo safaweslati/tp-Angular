@@ -1,20 +1,56 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 5%">
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light"
+  style="margin-bottom: 5%"
+>
   <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false" aria-label="Toggle navigation" >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['word']">Mini Word</a>
-      <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['rainbow']">Rainbow</a>
-      <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['cv']"> Cvs </a>
-      <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['login']">Login</a>
-
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        [routerLink]="['word']"
+        >Mini Word</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        [routerLink]="['rainbow']"
+        >Rainbow</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        [routerLink]="['cv']"
+      >
+        Cvs
+      </a>
+      <a
+        *ngIf="!isLogged"
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        [routerLink]="['login']"
+      >
+        Login
+      </a>
+      <a
+        *ngIf="isLogged"
+        class="nav-item nav-link"
+        (click)="logOut()"
+        [routerLink]="['login']"
+      >
+        Logout
+      </a>
     </div>
   </div>
 </nav>
-
