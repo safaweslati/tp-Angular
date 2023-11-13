@@ -22,7 +22,7 @@ export class DetailsCvComponent {
         this.cvService.getCvById(params['id']).subscribe({
           next: (cv) => (this.cv = cv),
           error: (error) => {
-            console.log(error);
+            // console.log(error);
             this.toastr.error(`le cv n'existe pas`);
             this.router.navigate(['cv']);
           },
