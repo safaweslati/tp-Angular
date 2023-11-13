@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { AuthentificationService } from '../services/authentification/authentification.service';
 import { Router } from '@angular/router';
-import { User } from '../models/User';
 import { UserLogin } from '../models/UserLogin';
 import { ToastrService } from 'ngx-toastr';
 
@@ -46,17 +45,11 @@ export class LoginFormComponent implements OnInit {
   get password(): AbstractControl {
     return this.form.get('password')!;
   }
-  // logout() {
-  //   // remove user from local storage and set current user to null
-  //   // localStorage.removeItem('currentUser');
-  //   // this.currentUserSubject.next(null);
-  // }
+
   handleSubmit() {
     const userLogin: UserLogin = this.form.value;
     this.authentificationService.login(userLogin).subscribe(
-      (response: User) => {
-        // console.log(response);
-        localStorage.setItem('user', JSON.stringify(response));
+      (response) => {
         this.router.navigate(['cv']);
       },
       (error) => {

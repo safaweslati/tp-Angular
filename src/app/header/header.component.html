@@ -36,7 +36,7 @@
         Cvs
       </a>
       <a
-        *ngIf="!isLogged"
+        *ngIf="!(authentificationService.isLogged$ | async)"
         class="nav-item nav-link"
         routerLinkActive="active"
         [routerLink]="['login']"
@@ -44,7 +44,7 @@
         Login
       </a>
       <a
-        *ngIf="isLogged"
+        *ngIf="authentificationService.isLogged$ | async"
         class="nav-item nav-link"
         (click)="logOut()"
         [routerLink]="['login']"

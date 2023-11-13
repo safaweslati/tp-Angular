@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Cv} from "../Model/Cv";
 import {CvService} from "../services/cv.service";
 import {Observable} from "rxjs";
@@ -9,20 +9,19 @@ import {ToastrService} from "ngx-toastr";
   templateUrl: './cv.component.html',
   styleUrls: ['./cv.component.css']
 })
-export class CvComponent {
-  cvs$! : Cv[];
+export class CvComponent implements OnInit{
+  cvs$! : Observable<Cv[]>;
   selectedCv! : Cv;
-  constructor(private cvService: CvService,private toastr: ToastrService) {
-    this.cvService.getCvs().subscribe({
-      next: (cvs) => this.cvs$ = cvs,
-      error : () => {
-        this.toastr.error('Probléme Accés Api, les données affichées sont fake');
-        this.cvs$ = this.cvService.getFakeCvs();
-      }
-    })
+
+  constructor(private cvService: CvService) {}
+  ngOnInit() {
+    this.cvs$=this.cvService.getCvs();
   }
+
 
   selectCv($event: any) {
     this.selectedCv = $event;
   }
+
+
 }

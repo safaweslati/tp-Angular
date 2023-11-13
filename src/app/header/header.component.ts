@@ -8,18 +8,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  isLogged = false;
+ // isLogged = false;
   private userSubscription!: Subscription;
 
   constructor(public authentificationService: AuthentificationService) {}
   ngOnInit(): void {
-    this.authentificationService.currentUser.subscribe((user) => {
-      this.isLogged = !!user;
-    });
+    //this.authentificationService.currentUser$.subscribe((user) => {
+      //this.isLogged = !!user;
+   // });
   }
   logOut() {
     this.authentificationService.logout();
-    console.log(this.isLogged);
   }
   ngOnDestroy() {
     this.userSubscription.unsubscribe();

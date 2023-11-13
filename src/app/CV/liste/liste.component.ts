@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Cv} from "../Model/Cv";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-liste',
@@ -8,7 +9,7 @@ import {Cv} from "../Model/Cv";
 })
 export class ListeComponent {
 
-  @Input() cvs!: Cv[];
+  @Input() cvs: Cv[]|null=[];
   @Output() selectedCv = new EventEmitter();
 
   selectCv($event: any) {

@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class MiniWordComponent {
 
-  color: any ;
-  size : any;
-  font: any;
+  color: string="" ;
+  size : number=50;
+  font: string="Arial";
 
 }
