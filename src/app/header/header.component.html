@@ -36,6 +36,14 @@
         Cvs
       </a>
       <a
+        class="nav-item nav-link"
+        [routerLink]="['product']"
+        routerLinkActive="active"
+      >
+        Products
+      </a>
+
+      <a
         *ngIf="!(authentificationService.isLogged$ | async)"
         class="nav-item nav-link"
         routerLinkActive="active"
