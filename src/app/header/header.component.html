@@ -36,13 +36,21 @@
         Cvs
       </a>
       <a
+        *ngIf="!(authentificationService.isLogged$ | async)"
         class="nav-item nav-link"
         routerLinkActive="active"
         [routerLink]="['login']"
       >
         Login
       </a>
-      <!-- <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['cv']"> Logout </a> -->
+      <a
+        *ngIf="authentificationService.isLogged$ | async"
+        class="nav-item nav-link"
+        (click)="logOut()"
+        [routerLink]="['login']"
+      >
+        Logout
+      </a>
     </div>
   </div>
 </nav>

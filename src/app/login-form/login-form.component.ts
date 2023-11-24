@@ -7,8 +7,8 @@ import {
 } from '@angular/forms';
 import { AuthentificationService } from '../services/authentification/authentification.service';
 import { Router } from '@angular/router';
-import { User } from '../models/User';
 import { UserLogin } from '../models/UserLogin';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-form',
@@ -21,7 +21,8 @@ export class LoginFormComponent implements OnInit {
   passwordInputInFocus = false;
   constructor(
     private authentificationService: AuthentificationService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -29,7 +30,7 @@ export class LoginFormComponent implements OnInit {
         validators: [Validators.email, Validators.required],
         asyncValidators: [],
         updateOn: 'change',
-      }), // formControlName
+      }),
       password: new FormControl(null, {
         validators: [Validators.minLength(4), Validators.required],
         asyncValidators: [],
@@ -44,19 +45,16 @@ export class LoginFormComponent implements OnInit {
   get password(): AbstractControl {
     return this.form.get('password')!;
   }
-  logout() {
-    // remove user from local storage and set current user to null
-    // localStorage.removeItem('currentUser');
-    // this.currentUserSubject.next(null);
-  }
+
   handleSubmit() {
     const userLogin: UserLogin = this.form.value;
-    this.authentificationService
-      .login(userLogin)
-      .subscribe((response: User) => {
-        // console.log(response);
-        localStorage.setItem('user', JSON.stringify(response));
+    this.authentificationService.login(userLogin).subscribe(
+      (response) => {
         this.router.navigate(['cv']);
-      });
+      },
+      (error) => {
+        this.toastr.error('wrong credentials');
+      }
+    );
   }
 }
