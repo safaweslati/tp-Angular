@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DetailsCvComponent } from './CV/details-cv/details-cv.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ProductModule } from './product/product.module';
+import { StreamsComponent } from './streams/streams.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
     DetailsCvComponent,
     HeaderComponent,
     LoginFormComponent,
+    StreamsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    ProductModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

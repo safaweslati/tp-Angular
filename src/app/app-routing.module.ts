@@ -5,6 +5,8 @@ import { DetailsCvComponent } from './CV/details-cv/details-cv.component';
 import { MiniWordComponent } from './mini-word/mini-word.component';
 import { TestComponent } from './directive/test/test.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ProductsListComponent } from './product/products-list/products-list.component';
+import { StreamsComponent } from './streams/streams.component';
 
 const routes: Routes = [
   {
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/cv', pathMatch: 'full' },
   { path: 'word', component: MiniWordComponent },
   { path: 'rainbow', component: TestComponent },
+  { path: 'product', component: ProductsListComponent },
   { path: 'login', component: LoginFormComponent },
+  { path: 'streams', component: StreamsComponent },
 ];
 
 @NgModule({

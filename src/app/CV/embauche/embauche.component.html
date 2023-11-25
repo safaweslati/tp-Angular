@@ -1,9 +1,11 @@
-
 <div *ngIf="cvs && cvs.length > 0">
   <h2>Liste des cvs sélectionnés pour embauche</h2>
-<div style="margin-top: 2%; ">
-  <span style="margin-right: 2%; display: inline-block;" *ngFor="let cv of cvs">
+  <div style="margin-top: 2%">
+    <span
+      style="margin-right: 2%; display: inline-block"
+      *ngFor="let cv of cvs"
+    >
       <app-item [cv]="cv" />
-  </span>
-</div>
+    </span>
+  </div>
 </div>

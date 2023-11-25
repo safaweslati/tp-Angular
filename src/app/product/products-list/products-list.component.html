@@ -1,0 +1,9 @@
+<p>products-list works!</p>
+<div class="container">
+  <button (click)="loadProducts()">More products</button>
+  <p>number of products {{ products.length }}</p>
+  <div class="d-flex flex-wrap" *ngFor="let product of products$ | async">
+    <app-product-item [product]="product"></app-product-item>
+  </div>
+  <div class="container"></div>
+</div>
