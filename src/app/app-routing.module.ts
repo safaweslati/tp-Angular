@@ -7,6 +7,7 @@ import { TestComponent } from './directive/test/test.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProductsListComponent } from './product/products-list/products-list.component';
 import { StreamsComponent } from './streams/streams.component';
+import { FilteredCvComponent } from './CV/filtered-cv/filtered-cv.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'product', component: ProductsListComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'streams', component: StreamsComponent },
+  { path: 'tabs', component: FilteredCvComponent },
 ];
 
 @NgModule({

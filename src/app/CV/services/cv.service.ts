@@ -12,15 +12,16 @@ import { MES_CONSTANTES } from '../../../config/constantes.config';
 export class CvService {
   private cvs: Cv[] = [];
   private Fakecvs: Cv[] = [
-    new Cv(1, 'Ouertani', 'Safa', 'Software Engineer', '   '),
+    new Cv(1, 'Ouertani', 'Safa', 'Software Engineer', '   ', 18),
     new Cv(
       2,
       'Ouerghi',
       'Douaa',
       'Graphic Designer',
-      'rotating_card_profile.png'
+      'rotating_card_profile.png',
+      45
     ),
-    new Cv(3, 'Mahmoud', 'Ahmed', 'DevOps Engineer', 'as.png'),
+    new Cv(3, 'Mahmoud', 'Ahmed', 'DevOps Engineer', 'as.png', 12),
   ];
   private link = MES_CONSTANTES.link;
 
