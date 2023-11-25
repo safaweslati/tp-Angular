@@ -20,6 +20,7 @@ import { DetailsCvComponent } from './CV/details-cv/details-cv.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProductModule } from './product/product.module';
+import { StreamsComponent } from './streams/streams.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProductModule } from './product/product.module';
     DetailsCvComponent,
     HeaderComponent,
     LoginFormComponent,
+    StreamsComponent,
   ],
   imports: [
     BrowserModule,

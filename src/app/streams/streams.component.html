@@ -1,0 +1,11 @@
+<div class="container">
+  <form [formGroup]="form">
+    <input type="number" class="form-control" formControlName="input1" />
+    <button (click)="terminateStream1()">terminate stream 1</button>
+    <input type="number" class="form-control" formControlName="input2" />
+    <button (click)="terminateStream2()">terminate stream 2</button>
+    <div>merge {{ merge | async }}</div>
+    <div>scan {{ scan | async }}</div>
+    <div>reduce {{ reduce | async }}</div>
+  </form>
+</div>

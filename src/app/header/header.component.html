@@ -42,6 +42,13 @@
       >
         Products
       </a>
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['streams']"
+        routerLinkActive="active"
+      >
+        RxJS Streams
+      </a>
 
       <a
         *ngIf="!(authentificationService.isLogged$ | async)"
