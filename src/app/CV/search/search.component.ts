@@ -24,9 +24,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      search: new FormControl(null, {
-        updateOn: 'change',
-      }),
+      search: new FormControl(),
     });
 
     this.cvs = this.form.get('search')!.valueChanges.pipe(
