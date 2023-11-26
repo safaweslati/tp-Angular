@@ -1,7 +1,0 @@
-{
-  "/": {
-    "target": "https://apilb.tridevs.net",
-    "secure": false,
-    "changeOrigin": true
-  }
-}
