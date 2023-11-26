@@ -14,8 +14,6 @@ export class StreamsComponent implements OnInit {
   reduce!: Observable<number>;
   private terminate1 = new Subject<number | null>();
   private terminate2 = new Subject<number | null>();
-  // private input1Stream$ = new Subject<number>();
-  // private input2Stream$ = new Subject<number>();
   ngOnInit(): void {
     this.form = new FormGroup({
       input1: new FormControl(null, {

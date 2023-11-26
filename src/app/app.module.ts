@@ -22,6 +22,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ProductModule } from './product/product.module';
 import { StreamsComponent } from './streams/streams.component';
 import { FilteredCvComponent } from './CV/filtered-cv/filtered-cv.component';
+import { SearchComponent } from './CV/search/search.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FilteredCvComponent } from './CV/filtered-cv/filtered-cv.component';
     LoginFormComponent,
     StreamsComponent,
     FilteredCvComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

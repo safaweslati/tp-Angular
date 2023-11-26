@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cv } from '../Model/Cv';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
@@ -32,6 +32,36 @@ export class CvService {
     .asObservable()
     .pipe(map((cvs) => cvs.filter((cv) => cv.age >= 40)));
   constructor(private http: HttpClient, private toastr: ToastrService) {}
+
+  searchCvs(name: string): Observable<Cv[]> {
+    if (!name.trim()) {
+      return of([]);
+    }
+    const filter = {
+      where: {
+        name: {
+          like: `%${name}%`,
+        },
+      },
+    };
+
+    return this.http
+      .get<Cv[]>(this.link, {
+        params: new HttpParams().set('filter', JSON.stringify(filter)),
+      })
+      .pipe(
+        catchError((error) => {
+          const filteredCvs = this.Fakecvs.filter((cv) =>
+            (cv.name.toLowerCase() + ' ' + cv.firstname.toLowerCase()).includes(
+              name.toLowerCase()
+            )
+          );
+          console.log(filteredCvs);
+
+          return of(filteredCvs);
+        })
+      );
+  }
 
   getCvs(): Observable<Cv[]> {
     return this.http.get<Cv[]>(this.link).pipe(
