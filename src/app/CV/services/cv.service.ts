@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cv } from '../Model/Cv';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { MES_CONSTANTES } from '../../../config/constantes.config';
 
@@ -24,7 +24,13 @@ export class CvService {
     new Cv(3, 'Mahmoud', 'Ahmed', 'DevOps Engineer', 'as.png', 12),
   ];
   private link = MES_CONSTANTES.link;
-
+  private cvsSubject: BehaviorSubject<Cv[]> = new BehaviorSubject<Cv[]>([]);
+  juniors$: Observable<Cv[]> = this.cvsSubject
+    .asObservable()
+    .pipe(map((cvs) => cvs.filter((cv) => cv.age < 40)));
+  seniors$: Observable<Cv[]> = this.cvsSubject
+    .asObservable()
+    .pipe(map((cvs) => cvs.filter((cv) => cv.age >= 40)));
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   getCvs(): Observable<Cv[]> {
@@ -36,7 +42,19 @@ export class CvService {
       })
     );
   }
-
+  getCvsFiltered(): void {
+    this.http
+      .get<Cv[]>(this.link)
+      .pipe(
+        tap((cvs) => this.cvsSubject.next(cvs)),
+        catchError((error) => {
+          this.toastr.error('Error fetching data from the API');
+          this.cvsSubject.next(this.getFakeCvs());
+          return of(this.getFakeCvs());
+        })
+      )
+      .subscribe();
+  }
   getFakeCvs() {
     return this.Fakecvs;
   }
