@@ -32,9 +32,45 @@
         class="nav-item nav-link"
         routerLinkActive="active"
         [routerLink]="['cv']"
+        [routerLinkActiveOptions]="{ exact: true }"
+
       >
         Cvs
       </a>
+
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        [routerLink]="['list']"
+      >
+        List
+      </a>
+
+      <a
+        class="nav-item nav-link"
+         routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        *ngIf="(authentificationService.isLogged$ | async)"
+         [routerLink]="['cv/add']">Add Cv
+      </a>
+
+
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['streams']"
+        routerLinkActive="active"
+      >
+        RxJS Streams
+      </a>
+
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['product']"
+        routerLinkActive="active"
+      >
+        Products
+      </a>
+
       <a
         *ngIf="!(authentificationService.isLogged$ | async)"
         class="nav-item nav-link"

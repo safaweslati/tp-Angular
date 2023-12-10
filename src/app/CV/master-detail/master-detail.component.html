@@ -1,0 +1,4 @@
+<app-liste [cvs]="cvs$ | async" (selectedCv)="selectCv($event)"/>
+<div class="detail-container" style="padding-top: 4%;">
+  <router-outlet></router-outlet>
+</div>

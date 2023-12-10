@@ -22,7 +22,10 @@ export class EmbaucheService {
         cv.id === cv.id && c.name === cv.name && c.firstname === cv.firstname
     );
     console.log(index);
-    if (index < 0) this.cvs.push(cv);
+    if (index < 0) {
+      this.cvs.push(cv);
+      this.toastr.success(`${cv.name} ${cv.firstname} a été sélectionnée`);
+    }
     else
       this.toastr.error(`${cv.name} ${cv.firstname} a été déjà sélectionnée`);
   }

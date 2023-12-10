@@ -1,48 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cv } from '../Model/Cv';
 import { CvService } from '../services/cv.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { catchError, switchMap } from 'rxjs/operators';
+import {EMPTY, map, Observable} from 'rxjs';
 
 @Component({
   selector: 'app-details-cv',
   templateUrl: './details-cv.component.html',
   styleUrls: ['./details-cv.component.css'],
 })
-export class DetailsCvComponent {
-  cv!: Cv;
+export class DetailsCvComponent implements OnInit {
+  cv$!: Observable<Cv>;
+
   constructor(
     private cvService: CvService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
-  ) {
-    this.activatedRoute.params.subscribe({
-      next: (params) => {
-        this.cvService.getCvById(params['id']).subscribe({
-          next: (cv) => (this.cv = cv),
-          error: (error) => {
-            // console.log(error);
-            this.toastr.error(`le cv n'existe pas`);
-            this.router.navigate(['cv']);
-          },
-        });
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.cv$ = this.route.data.pipe(
+      map(data => data['cv'])
+    );
   }
 
-  delete() {
-    this.cvService.deleteCv(this.cv.id).subscribe(
-      (response) => {
-        this.router.navigate(['cv']);
-      },
-      (error) => {
-        console.log(error);
-        this.router.navigate(['cv']);
-      }
-    );
+  delete(): void {
+    this.cv$.pipe(
+      switchMap((cv) => this.cvService.deleteCv(cv.id))
+    ).subscribe(() => this.router.navigate(['cv']));
+  }
+
+  update(id: number) {
+    const link=['cv/add',id];
+    this.router.navigate(link);
   }
 }

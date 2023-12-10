@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import {Cv} from "../Model/Cv";
 import {Observable} from "rxjs";
 
@@ -11,6 +11,7 @@ export class ListeComponent {
 
   @Input() cvs: Cv[]|null=[];
   @Output() selectedCv = new EventEmitter();
+
 
   selectCv($event: any) {
     this.selectedCv.emit($event);

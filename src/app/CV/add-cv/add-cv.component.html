@@ -1,0 +1,42 @@
+<form [formGroup]="cvForm" (ngSubmit)="onFormSubmit()" class="mt-4">
+  <label class="mb-2" for="name">Name</label>
+  <input id="name" type="text" formControlName="name" class="form-control mb-2" />
+  <div *ngIf="cvForm.get('name')?.hasError('required') && cvForm.get('name')?.touched" class="alert alert-danger">
+    Name is required.
+  </div>
+
+  <label class="mb-2" for="firstname">Firstname</label>
+  <input id="firstname" type="text" formControlName="firstname" class="form-control mb-2" />
+  <div *ngIf="cvForm.get('firstname')?.hasError('required') && cvForm.get('firstname')?.touched" class="alert alert-danger">
+    Firstname is required.
+  </div>
+
+  <label class="mb-2" for="job">Job</label>
+  <input id="job" type="text" formControlName="job" class="form-control mb-2" />
+  <div *ngIf="cvForm.get('job')?.hasError('required') && cvForm.get('job')?.touched" class="alert alert-danger">
+    Job is required.
+  </div>
+
+  <label class="mb-2" for="age">Age</label>
+  <input  id="age" type="number" formControlName="age" class="form-control mb-2" />
+  <div *ngIf="cvForm.get('age')?.hasError('required') && cvForm.get('age')?.touched" class="alert alert-danger">
+    Age is required.
+  </div>
+  <div *ngIf="cvForm.get('age')?.hasError('min')" class="alert alert-danger">
+    Age must be at least 18.
+  </div>
+  <div *ngIf="cvForm.get('age')?.hasError('max')" class="alert alert-danger">
+    Age cannot be more than 55.
+  </div>
+
+  <label class="mb-2" for="cin">CIN</label>
+  <input id="cin" type="number" formControlName="cin" class="form-control mb-2" />
+  <div *ngIf="cvForm.get('cin')?.hasError('required') && cvForm.get('cin')?.touched" class="alert alert-danger">
+    CIN is required.
+  </div>
+
+  <label class="mb-2" for="path">Path</label>
+  <input id="path" type="text" formControlName="path" class="form-control mb-2" />
+
+  <button class="btn btn-danger mt-2" [disabled]="cvForm.invalid || !cvForm.dirty">Submit</button>
+</form>

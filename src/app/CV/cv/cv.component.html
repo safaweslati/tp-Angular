@@ -1,11 +1,23 @@
-<div class="row" >
+<app-autocomplete></app-autocomplete>
+
+<ul class="nav nav-tabs"  style="padding-top: 4%">
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="currentTab === 'juniors'" (click)="selectTab('juniors')">Juniors</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="currentTab === 'seniors'" (click)="selectTab('seniors')">Seniors</a>
+  </li>
+</ul>
+
+<div class="row">
   <div class="col-md-6 col-sm-3">
-    <app-liste (selectedCv)="selectCv($event)"  [cvs]="cvs$ | async"></app-liste>
+    <app-liste *ngIf="currentTab === 'juniors'" (selectedCv)="selectCv($event)" [cvs]="juniors$ | async"></app-liste>
+    <app-liste *ngIf="currentTab === 'seniors'" (selectedCv)="selectCv($event)" [cvs]="seniors$ | async"></app-liste>
   </div>
   <div class="col-md-5 col-sm-9" style="margin-left: 3%">
     <app-details *ngIf="selectedCv" [cv]="selectedCv"></app-details>
   </div>
 </div>
-<div class="row" style="margin-top: 2%; margin-bottom: 5% ">
+<div class="row" style="margin-top: 5%; margin-bottom: 5% ">
   <app-embauche></app-embauche>
 </div>

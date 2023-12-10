@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, map, Observable} from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { User } from 'src/app/models/User';
-import { UserLogin } from 'src/app/models/UserLogin';
+import { User } from 'src/app/login-form/Models/User';
+import { UserLogin } from 'src/app/login-form/Models/UserLogin';
 import {MES_CONSTANTES} from "../../../config/constantes.config";
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AuthentificationService {
   private api = MES_CONSTANTES.login;
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
-  public isLogged$ : Observable<Boolean> = this.currentUserSubject.pipe(map(user => !!user));
+  public isLogged$ : Observable<boolean> = this.currentUserSubject.pipe(map(user => !!user));
 
   constructor(private http: HttpClient) {
     const storedUser = localStorage.getItem('user');

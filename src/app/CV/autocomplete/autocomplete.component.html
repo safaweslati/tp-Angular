@@ -1,0 +1,5 @@
+<div class="input-group mb-3" >
+  <input type="text" class="form-control" [formControl]="searchControl" placeholder="Search">
+</div>
+
+<app-liste [cvs]="choices$|async" />

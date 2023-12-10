@@ -5,10 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { AuthentificationService } from '../services/authentification/authentification.service';
 import { Router } from '@angular/router';
-import { UserLogin } from '../models/UserLogin';
+import { UserLogin } from './Models/UserLogin';
 import { ToastrService } from 'ngx-toastr';
+import {AuthentificationService} from "./service/authentification.service";
 
 @Component({
   selector: 'app-login-form',
@@ -20,7 +20,7 @@ export class LoginFormComponent implements OnInit {
   emailInputInFocus = false;
   passwordInputInFocus = false;
   constructor(
-    private authentificationService: AuthentificationService,
+    private authentificationService: AuthentificationService ,
     private router: Router,
     private toastr: ToastrService
   ) {}

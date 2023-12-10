@@ -1,0 +1,8 @@
+<div class="container" *ngIf="products$ | async as products">
+  <button class="btn btn-primary my-3" (click)="loadProducts()">More products</button>
+  <div *ngIf="!products.length">Loading ...</div>
+  <p class="mb-3">Number of products: {{ products.length }}</p>
+  <div class="d-flex flex-wrap">
+    <app-product-item class="mr-2 mb-2" *ngFor="let product of products" [product]="product"></app-product-item>
+  </div>
+</div>
